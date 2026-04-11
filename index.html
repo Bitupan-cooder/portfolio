@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#d697ff",
+                        "secondary-container": "#e5e2e1",
+                        "on-secondary": "#f5f2f1",
+                        "error-dim": "#a70138",
+                        "background": "#f6f6f6",
+                        "surface": "#f6f6f6",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-container": "#4f0000",
+                        "surface-container-highest": "#dbdddd",
+                        "primary": "#bb0100",
+                        "tertiary": "#7b40a2",
+                        "on-tertiary-container": "#4c0a73",
+                        "on-surface": "#2d2f2f",
+                        "surface-dim": "#d2d5d5",
+                        "primary-fixed": "#ff7763",
+                        "on-tertiary": "#fdeeff",
+                        "on-surface-variant": "#5a5c5c",
+                        "on-tertiary-fixed": "#2a0044",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#510017",
+                        "outline-variant": "#acadad",
+                        "on-primary-fixed-variant": "#600000",
+                        "surface-bright": "#f6f6f6",
+                        "surface-container": "#e7e8e8",
+                        "on-primary-fixed": "#000000",
+                        "inverse-on-surface": "#9c9d9d",
+                        "on-secondary-fixed-variant": "#5c5b5b",
+                        "inverse-surface": "#0c0f0f",
+                        "inverse-primary": "#ff5540",
+                        "surface-container-low": "#f0f1f1",
+                        "surface-variant": "#dbdddd",
+                        "tertiary-fixed": "#d697ff",
+                        "on-tertiary-fixed-variant": "#56197d",
+                        "on-secondary-container": "#525151",
+                        "secondary-dim": "#504f4f",
+                        "on-primary": "#ffefed",
+                        "surface-container-high": "#e1e3e3",
+                        "primary-fixed-dim": "#ff5b47",
+                        "surface-tint": "#bb0100",
+                        "on-background": "#2d2f2f",
+                        "primary-container": "#ff7763",
+                        "on-secondary-fixed": "#403f3f",
+                        "outline": "#757777",
+                        "on-error": "#ffefef",
+                        "error-container": "#f74b6d",
+                        "secondary": "#5c5b5b",
+                        "tertiary-fixed-dim": "#c889f1",
+                        "secondary-fixed-dim": "#d6d4d3",
+                        "error": "#b41340",
+                        "primary-dim": "#a40100",
+                        "tertiary-dim": "#6e3395"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Newsreader"],
+                        "label": ["Inter"]
+                    },
+                    "animation": {
+                        'marquee': 'marquee 25s linear infinite',
+                        'glitch': 'glitch 1s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'rotate-slow': 'rotate 20s linear infinite',
+                    },
+                    "keyframes": {
+                        'marquee': {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        'glitch': {
+                            '0%': { transform: 'translate(0)' },
+                            '20%': { transform: 'translate(-2px, 2px)' },
+                            '40%': { transform: 'translate(-2px, -2px)' },
+                            '60%': { transform: 'translate(2px, 2px)' },
+                            '80%': { transform: 'translate(2px, -2px)' },
+                            '100%': { transform: 'translate(0)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(2deg)' },
+                        },
+                        'rotate': {
+                            'from': { transform: 'rotate(0deg)' },
+                            'to': { transform: 'rotate(360deg)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 2px #bb0100;
+            color: transparent;
+        }
+
+        .text-stroke-white {
+            -webkit-text-stroke: 1px #f6f6f6;
+            color: transparent;
+        }
+
+        .blend-diff {
+            mix-blend-mode: difference;
+        }
+
+        .blend-excl {
+            mix-blend-mode: exclusion;
+        }
+
+        .grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        /* ── Hero word-by-word entrance ── */
+        .hero-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(60px) skewY(4deg);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-word.visible {
+            opacity: 1;
+            transform: translateY(0) skewY(0deg);
+        }
+
+        /* ── Subtitle line fade-up ── */
+        .hero-sub {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-sub.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Scroll-fade base ── */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay helpers */
+        .delay-100 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-400 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-500 {
+            transition-delay: 0.5s;
+        }
+
+        .delay-600 {
+            transition-delay: 0.6s;
+        }
+
+        /* ── Slide-in from left ── */
+        .scroll-slide-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ── Scale-up ── */
+        .scroll-scale {
+            opacity: 0;
+            transform: scale(0.88);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        /* Legacy reveal-on-scroll kept for compatibility */
+        .reveal-on-scroll.active {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        #roaming-avatar {
+            pointer-events: none;
+            will-change: transform;
+            z-index: 55;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+            transition: transform 0.1s ease-out;
+        }
+
+        /* ── Page-load fade in for nav ── */
+        @keyframes navDrop {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            animation: navDrop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        }
+
+        /* ── CTA section line reveal ── */
+        @keyframes lineGrow {
+            from {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            to {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+
+        .line-grow {
+            animation: lineGrow 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Photography cards stagger */
+        .photo-card:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .photo-card:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .photo-card:nth-child(3) {
+            transition-delay: 0.30s;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background font-body text-on-background selection:bg-primary selection:text-on-primary overflow-x-hidden">
+    <div class="fixed inset-0 grain z-50"></div>
+
+    <!-- Roaming Minecraft Avatar -->
+    <div class="fixed w-32 md:w-48 h-auto top-0 left-0 overflow-hidden pointer-events-none" id="roaming-avatar">
+        <div class="absolute -top-16 left-1/2 -translate-x-1/2 bg-white text-[#000000] border-4 border-primary font-headline font-black text-lg uppercase px-4 py-2 opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-2xl z-[60]"
+            id="avatar-bubble">Hey...</div>
+        <img alt="Roaming Explorer" class="w-full h-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida/ADBb0uixyZA1mxH69gdgxyxmHrxfSDZYmieMtwoBjIjnvib7sOzGWwfoxK8g9Lkc5qtdOyJDh3m8VJ_fkmYnshqoE3B5gZWv9H3bsEvY8bFdC3fWh3yCuPf-3SjeNvZemc9B8Els-4jPrXdATetaRs6_CFCQ3SS19flBPSCzOpCgvS8RwtyE-yGJ3Yyay79lbrIUCvZ6lpdriCC3xZSeYGRlsvE6EH28xCKXrHFrGwzhqsmu_490V78L1N6t6kdkmbRSQWatsv2-c1M5" />
+    </div>
+
+    <!-- TopNavBar -->
+    <nav
+        class="flex justify-between items-center w-full px-8 py-6 max-w-[100vw] bg-[#f6f6f6] dark:bg-[#1a1a1a] fixed top-0 z-[60]">
+        <div class="text-2xl font-black tracking-tighter text-[#bb0100] dark:text-[#ff1a1a] font-['Inter'] uppercase">
+            Portfolio
+        </div>
+        <div class="hidden md:flex items-center space-x-12">
+            <a class="font-['Inter'] font-black uppercase tracking-tighter text-[#bb0100] border-b-4 border-[#bb0100] pb-1 hover:text-[#bb0100] hover:translate-x-1 transition-transform duration-100"
+                href="#">WORK</a>
+            <a class="font-['Inter'] font-black uppercase tracking-tighter text-[#2d2f2f] dark:text-[#e7e8e8] hover:text-[#bb0100] hover:translate-x-1 transition-transform duration-100"
+                href="#">EDITORIAL</a>
+            <a class="font-['Inter'] font-black uppercase tracking-tighter text-[#2d2f2f] dark:text-[#e7e8e8] hover:text-[#bb0100] hover:translate-x-1 transition-transform duration-100"
+                href="#">ARCHIVE</a>
+            <a class="font-['Inter'] font-black uppercase tracking-tighter text-[#2d2f2f] dark:text-[#e7e8e8] hover:text-[#bb0100] hover:translate-x-1 transition-transform duration-100"
+                href="#">PROCESS</a>
+        </div>
+        <button
+            class="bg-primary text-on-primary px-8 py-2 font-['Inter'] font-black uppercase tracking-widest hover:translate-x-1 transition-transform duration-100">
+            HIRE
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden perspective-1000">
+        <div class="absolute inset-0 flex flex-col justify-center items-center pointer-events-none select-none">
+            <span
+                class="text-[20vw] font-headline font-black text-stroke leading-none opacity-20 whitespace-nowrap animate-float">PORTFOLIO</span>
+            <span
+                class="text-[20vw] font-headline font-black text-primary leading-none whitespace-nowrap -mt-[5vw] animate-float">PAGE</span>
+        </div>
+        <div
+            class="absolute right-[10%] top-[20%] w-64 h-64 border-8 border-primary/20 animate-rotate-slow preserve-3d hidden lg:block">
+        </div>
+        <div
+            class="absolute left-[5%] bottom-[15%] w-48 h-48 border-4 border-dashed border-primary/30 animate-float preserve-3d hidden lg:block">
+        </div>
+
+        <div class="relative z-10 w-full px-8 flex flex-col items-start md:items-center">
+            <!-- Animated Hero Heading: words split and stagger in -->
+            <h1 id="hero-heading"
+                class="font-headline font-black text-[12vw] md:text-[8vw] leading-[0.9] tracking-tighter uppercase text-on-background blend-diff">
+            </h1>
+
+            <div
+                class="mt-12 flex flex-col md:flex-row items-start md:items-end w-full max-w-6xl justify-between border-t-2 border-primary pt-6 hero-sub">
+                <p class="max-w-md font-body text-xl md:text-2xl leading-tight">
+                    A digital atelier focusing on <span class="italic font-bold">aggressive precision</span> and
+                    architectural motion. We strip away the noise to reveal the raw power of the grid.
+                </p>
+                <div
+                    class="mt-8 md:mt-0 flex flex-col items-start font-label font-bold text-[10px] tracking-[0.3em] uppercase space-y-2">
+                    <span>Scroll to explore</span>
+                    <span class="material-symbols-outlined text-primary text-4xl animate-bounce">arrow_downward</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editor Intro Section -->
+    <section class="relative py-48 px-8 bg-white overflow-hidden" id="editor-intro">
+        <div class="absolute inset-0 flex items-center pointer-events-none z-0">
+            <div class="whitespace-nowrap flex animate-marquee">
+                <span class="text-[25vw] font-headline font-black text-primary opacity-5 px-12">BITUPAN DEKA</span>
+                <span class="text-[25vw] font-headline font-black text-primary opacity-5 px-12">BITUPAN DEKA</span>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+                <div class="overflow-hidden scroll-slide-left">
+                    <h2
+                        class="font-headline font-black text-7xl md:text-[10vw] uppercase tracking-tighter leading-none">
+                        Editor<br /><span class="text-primary blend-excl">Vision</span>
+                    </h2>
+                </div>
+                <div class="text-right flex flex-col items-end scroll-fade delay-200">
+                    <div class="text-primary font-headline font-black text-4xl mb-2 tracking-tighter">BITUPAN DEKA</div>
+                    <div class="h-1 w-32 bg-primary"></div>
+                    <p class="font-body text-xl italic mt-4 max-w-xs">Establishing a new standard for high-fidelity 3D
+                        and kinetic storytelling.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 relative group perspective-1000 scroll-scale delay-100">
+                    <div
+                        class="relative w-full h-full flex items-center justify-center transform hover:scale-[1.05] transition-transform duration-700 ease-out preserve-3d">
+                        <img alt="High-quality 3D avatar character render"
+                            class="max-h-full max-w-full object-contain reveal-on-scroll opacity-0 translate-y-12 transition-all duration-1000 ease-out active"
+                            src="https://lh3.googleusercontent.com/aida/ADBb0ugL6GDADDDcTxBHZOTaUd3z3itIpHn4SebWBc9SLU-PQ744hf-Qgr7Y30dI9FRGPHP-SlXCtVThFHljkw5uwnfewWC-AuD8pcxf465yM3ckO5sbjaBjh2PQMBfAZ-ssQ5tuDaTBCPXNj0dp8BgmRsQ-k5M0fImek6ZTv5oIrtp54xZKAFABdEjuuAcedL3Wm7XdegJL9k5HsvICct7WKyCtqaumWBvfa2r113nObLe3ZD-UAHtb-OXAJ_9sMEbWImSCZFqzSXgB" />
+                        <div
+                            class="absolute bottom-4 left-4 z-20 group-hover:translate-x-2 transition-transform duration-500">
+                            <span
+                                class="bg-primary text-white font-label font-bold text-[10px] tracking-widest uppercase px-4 py-2 block">Hey..</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex flex-col space-y-12">
+                    <div class="border-l-8 border-primary pl-8 scroll-fade delay-200">
+                        <h4
+                            class="font-headline font-black text-5xl uppercase tracking-tighter leading-tight text-on-background">
+                            CRAFTING<br /><span class="text-primary italic">THE FLOW</span></h4>
+                        <p class="font-body text-2xl mt-6 italic leading-snug">
+                            Where technical mastery meets avant-garde aesthetics. Every frame is a calculated strike.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 scroll-fade delay-300">
+                        <div
+                            class="p-6 bg-primary text-on-primary group hover:bg-black transition-colors transform hover:-translate-y-1 duration-300">
+                            <span
+                                class="font-label font-bold text-[10px] tracking-widest uppercase opacity-70">Technique</span>
+                            <p class="font-headline font-black text-2xl uppercase mt-1">Glitch Logic</p>
+                        </div>
+                        <div
+                            class="p-6 border-4 border-primary group hover:border-black transition-colors transform hover:-translate-y-1 duration-300">
+                            <span
+                                class="font-label font-bold text-[10px] tracking-widest uppercase text-primary">Philosophy</span>
+                            <p class="font-headline font-black text-2xl uppercase mt-1">Raw Precision</p>
+                        </div>
+                    </div>
+                    <button
+                        class="relative overflow-hidden bg-black text-white py-8 font-headline font-black text-2xl uppercase tracking-[0.2em] group transition-all scroll-fade delay-400">
+                        <span class="relative z-10 group-hover:text-primary transition-colors">VIEW EDITS</span>
+                        <div
+                            class="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out">
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography Aesthetic Section -->
+    <section class="py-32 px-8 overflow-hidden bg-background">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-baseline mb-24 gap-4">
+                <div class="flex items-baseline space-x-4 scroll-slide-left">
+                    <h3 class="font-headline font-black text-4xl md:text-6xl uppercase tracking-tighter">Photography
+                    </h3>
+                </div>
+                <p class="font-body text-2xl max-w-sm italic scroll-fade delay-200">Capturing the stillness of form
+                    within the chaos of the kinetic web.</p>
+            </div>
+            <div class="relative">
+                <div
+                    class="absolute top-0 right-0 h-full w-full pointer-events-none opacity-[0.03] flex items-center justify-center">
+                    <span
+                        class="font-headline font-black text-[35vw] uppercase leading-none transform -rotate-12 animate-rotate-slow">STILLNESS</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+                    <div class="group perspective-1000 scroll-fade photo-card">
+                        <div
+                            class="aspect-[9/16] bg-surface-container-highest mb-6 overflow-hidden relative border-b-8 border-primary transform group-hover:rotate-x-6 group-hover:scale-105 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                <span
+                                    class="font-headline font-black text-on-primary text-4xl uppercase tracking-tighter -rotate-90">mountain</span>
+                            </div>
+                            <img alt="Modern architectural photography with sharp lines and high contrast"
+                                class="w-full h-full object-cover grayscale brightness-110 group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-1000"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0ugC4g6378NWs1RET4fLN8JpetIoRCYv6tpLx3Wva2rP71T_ztDuBppjKNzHV_yTIJn7jow5QQANrBcaYLROICUs_O6c9ZvKFUQrwAzT6jEMleNUq_WRS_YlWRA4KzxWFKq2duznHfUxrX9BKxREDY-Qks02G2bfXSehU1L0QrTGahojAK7fPsDyGZ82nD3r8QqOXF3bAcxYmUf4FRtS0bKtQrRltgGDJ2rrSQrL7R4Utl0TF65g58e-lVt4UaVnvVMJ08ixISHPnw" />
+                        </div>
+                        <h5 class="font-headline font-black text-2xl uppercase tracking-tighter">Monolithic Form <span
+                                class="italic font-body lowercase tracking-normal">01</span></h5>
+                        <p class="font-label font-bold text-[10px] tracking-[0.2em] uppercase mt-2 opacity-60">natural /
+                            frame</p>
+                    </div>
+                    <div class="group mt-12 md:mt-24 perspective-1000 scroll-fade photo-card">
+                        <div
+                            class="aspect-[9/16] bg-surface-container-highest mb-6 overflow-hidden relative border-b-8 border-black transform group-hover:rotate-x-6 group-hover:scale-105 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                <span
+                                    class="font-headline font-black text-white text-4xl uppercase tracking-tighter -rotate-90">Architech</span>
+                            </div>
+                            <img alt="High-end editorial portrait photography with red lighting"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-1000"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0ug_7P8o8zf1CMr3Vk9HKlJKm8tJ34IPwVmAlPllwliOenN0utZ9bCo_VKuyU7SJ_jNVVKQOGPCDpS2IcdVx9_qJVH8sGkVIq9PwL0KVosfrAIAFG_Is34VAYKDaujYwNBscjj1tOHmdjtT1oqerToU9L09uYbioevBUjC3ql-rvjYEfY5xHcT0JHaT48NmMv6AfdmAncCJ0Up9lZuLbSxjAip9GG_-iDQyneqRbkglxl_uE7KNrF9sh0lDu9ppC3d3nWJRLcWU3kQ" />
+                            <div class="absolute inset-0 bg-primary/30 mix-blend-overlay opacity-50"></div>
+                        </div>
+                        <h5 class="font-headline font-black text-2xl uppercase tracking-tighter">Architech Geometry
+                            <span class="italic font-body lowercase tracking-normal">02</span>
+                        </h5>
+                        <p class="font-label font-bold text-[10px] tracking-[0.2em] uppercase mt-2 opacity-60">
+                            Architectural / Redux</p>
+                    </div>
+                    <div class="group md:mt-12 perspective-1000 scroll-fade photo-card">
+                        <div
+                            class="aspect-[9/16] bg-surface-container-highest mb-6 overflow-hidden relative border-b-8 border-primary transform group-hover:rotate-x-6 group-hover:scale-105 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                <span
+                                    class="font-headline font-black text-on-primary text-4xl uppercase tracking-tighter -rotate-90">MINIMAL</span>
+                            </div>
+                            <img alt="Minimalist urban detail photography"
+                                class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-1000"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uit5JJ2pxopokko1R42Mp0T9-ILJ3CJrG52KNACcggDbYN6SaXV0GMEtKw-3psCpnTDWYhB-6oOoCeSIzLACB5eGwpnIplqdm0XncCG6TcD65A_a99-Fkr7ypD8Tf7AB0Y-BhNfQsvizpr9lPo9GLop0epLRvQzv2AuPPryEuq5IAandXcKLoVPAxoO1NnqSOsXC6o7kVgNYmcYfXdAlRcmHdTH2sSj5Ah0UlRkJAp6YYssFj1p4vg6ahzJZ_VfqVcjIvWWHdA55w" />
+                        </div>
+                        <h5 class="font-headline font-black text-2xl uppercase tracking-tighter">Abstract Grid <span
+                                class="italic font-body lowercase tracking-normal">03</span></h5>
+                        <p class="font-label font-bold text-[10px] tracking-[0.2em] uppercase mt-2 opacity-60">Urban /
+                            Composition</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="py-48 px-8 bg-primary text-on-primary overflow-hidden relative">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+            <span
+                class="text-[30vw] font-headline font-black text-stroke-white opacity-10 whitespace-nowrap animate-marquee">VANGUARD
+                VANGUARD VANGUARD</span>
+        </div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2
+                class="font-headline font-black text-6xl md:text-9xl uppercase tracking-tighter leading-none mb-12 transform hover:scale-105 transition-transform duration-500 scroll-fade">
+                Let's Break <br /> The Grid.</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 scroll-fade delay-200">
+                <a class="w-full md:w-auto bg-on-primary text-primary px-16 py-6 font-headline font-black text-2xl uppercase tracking-widest hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-300"
+                    href="#">
+                    Start Project
+                </a>
+                <a class="w-full md:w-auto border-4 border-on-primary text-on-primary px-16 py-6 font-headline font-black text-2xl uppercase tracking-widest hover:-translate-y-2 hover:bg-on-primary hover:text-primary transition-all duration-300"
+                    href="#">
+                    View Archive
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 bg-[#bb0100] dark:bg-[#bb0100]">
+        <div
+            class="font-['Inter'] font-bold text-[10px] tracking-[0.2em] uppercase text-[#ffefed] opacity-80 mb-6 md:mb-0">
+            ©2024 KINETIC VANGUARD. ALL RIGHTS RESERVED.
+        </div>
+        <div class="flex space-x-12">
+            <a class="font-['Inter'] font-bold text-[10px] tracking-[0.2em] uppercase text-[#ffefed] opacity-80 hover:opacity-100 hover:scale-105 transition-all"
+                href="#">TYPEFACE</a>
+            <a class="font-['Inter'] font-bold text-[10px] tracking-[0.2em] uppercase text-[#ffefed] opacity-80 hover:opacity-100 hover:scale-105 transition-all"
+                href="#">GRID</a>
+            <a class="font-['Inter'] font-bold text-[10px] tracking-[0.2em] uppercase text-[#ffefed] opacity-80 hover:opacity-100 hover:scale-105 transition-all"
+                href="#">MOTION</a>
+            <a class="font-['Inter'] font-bold text-[10px] tracking-[0.2em] uppercase text-[#ffefed] opacity-80 hover:opacity-100 hover:scale-105 transition-all"
+                href="#">CONTRAST</a>
+        </div>
+        <div class="hidden md:flex space-x-6 mt-6 md:mt-0">
+            <span
+                class="material-symbols-outlined text-on-primary cursor-pointer hover:scale-125 transition-transform">share</span>
+            <span
+                class="material-symbols-outlined text-on-primary cursor-pointer hover:scale-125 transition-transform">alternate_email</span>
+        </div>
+    </footer>
+
+    <script>
+        /* ─────────────────────────────────────────────
+           1. HERO HEADING — word-by-word entrance
+        ───────────────────────────────────────────── */
+        const heroLines = [
+            { words: ["HI,", "WELCOME"], break: true },
+            { words: ["TO", "MY", "PORTFOLIO"], break: true },
+            { words: [null], italic: true, break: false }  // "Page" italic span
+        ];
+
+        const heading = document.getElementById('hero-heading');
+
+        // Line 1: HI, WELCOME
+        const line1 = document.createElement('span');
+        line1.style.display = 'block';
+        ["HI,", "WELCOME"].forEach((w, i) => {
+            const span = document.createElement('span');
+            span.className = 'hero-word';
+            span.style.transitionDelay = `${i * 0.12}s`;
+            span.textContent = w + '\u00A0';
+            line1.appendChild(span);
+        });
+        heading.appendChild(line1);
+
+        // Line 2: TO MY PORTFOLIO
+        const line2 = document.createElement('span');
+        line2.style.display = 'block';
+        ["TO", "MY", "PORTFOLIO"].forEach((w, i) => {
+            const span = document.createElement('span');
+            span.className = 'hero-word';
+            span.style.transitionDelay = `${0.24 + i * 0.12}s`;
+            span.textContent = w + '\u00A0';
+            line2.appendChild(span);
+        });
+        heading.appendChild(line2);
+
+        // Line 3: "Page" italic
+        const line3 = document.createElement('span');
+        line3.style.display = 'block';
+        const pageSpan = document.createElement('span');
+        pageSpan.className = 'hero-word text-primary italic font-body lowercase tracking-normal';
+        pageSpan.style.transitionDelay = '0.6s';
+        pageSpan.textContent = 'Page';
+        line3.appendChild(pageSpan);
+        heading.appendChild(line3);
+
+        // Trigger hero words after 200ms
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                document.querySelectorAll('.hero-word').forEach(el => el.classList.add('visible'));
+            }, 200);
+        });
+
+        // Trigger hero subtitle
+        setTimeout(() => {
+            document.querySelector('.hero-sub')?.classList.add('visible');
+        }, 900);
+
+
+        /* ─────────────────────────────────────────────
+           2. SCROLL FADE — IntersectionObserver
+        ───────────────────────────────────────────── */
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // unobserve so it only animates once
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll(
+            '.scroll-fade, .scroll-slide-left, .scroll-scale'
+        ).forEach(el => fadeObserver.observe(el));
+
+
+        /* ─────────────────────────────────────────────
+           3. LEGACY reveal-on-scroll
+        ───────────────────────────────────────────── */
+        const legacyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => legacyObserver.observe(el));
+
+
+        /* ─────────────────────────────────────────────
+           4. ROAMING AVATAR
+        ───────────────────────────────────────────── */
+        const avatar = document.getElementById('roaming-avatar');
+        const bubble = document.getElementById('avatar-bubble');
+        const greetings = ["Hi!", "Hey!", "Hello!"];
+        let targetX = 50, targetY = 70, currentX = 50, currentY = 70;
+        let scrollTimeout;
+
+        window.addEventListener('scroll', () => {
+            bubble.classList.add('opacity-0');
+            clearTimeout(scrollTimeout);
+
+            const scrollY = window.pageYOffset;
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollY / totalHeight;
+
+            targetX = 10 + Math.sin(scrollPercent * Math.PI * 4) * 40 + 40;
+            targetY = 15 + (scrollPercent * 70);
+
+            const direction = Math.cos(scrollPercent * Math.PI * 4);
+            const flip = direction > 0 ? 'scaleX(1)' : 'scaleX(-1)';
+
+            currentX += (targetX - currentX) * 0.1;
+            currentY += (targetY - currentY) * 0.1;
+
+            avatar.style.transform = `translate(${currentX}vw, ${currentY}vh) ${flip}`;
+
+            scrollTimeout = setTimeout(() => {
+                bubble.innerText = greetings[Math.floor(Math.random() * greetings.length)];
+                bubble.classList.remove('opacity-0');
+            }, 400);
+        });
+
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+
+</html>
