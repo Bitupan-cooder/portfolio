@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400;1,6..72,700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#5c5b5b",
+                        "on-secondary-fixed-variant": "#5c5b5b",
+                        "on-primary-fixed-variant": "#600000",
+                        "tertiary-fixed-dim": "#c889f1",
+                        "surface-tint": "#bb0100",
+                        "tertiary-container": "#d697ff",
+                        "on-tertiary-fixed-variant": "#56197d",
+                        "surface-bright": "#f6f6f6",
+                        "secondary-dim": "#504f4f",
+                        "surface": "#f6f6f6",
+                        "surface-container-highest": "#dbdddd",
+                        "on-primary-fixed": "#000000",
+                        "tertiary-fixed": "#d697ff",
+                        "background": "#f6f6f6",
+                        "surface-variant": "#dbdddd",
+                        "on-primary": "#ffefed",
+                        "primary-dim": "#a40100",
+                        "on-tertiary": "#fdeeff",
+                        "on-surface": "#2d2f2f",
+                        "outline-variant": "#acadad",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-dim": "#d2d5d5",
+                        "inverse-surface": "#0c0f0f",
+                        "inverse-primary": "#ff5540",
+                        "on-background": "#2d2f2f",
+                        "surface-container-high": "#e1e3e3",
+                        "secondary-fixed-dim": "#d6d4d3",
+                        "on-error": "#ffefef",
+                        "surface-container": "#e7e8e8",
+                        "on-secondary": "#f5f2f1",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ff7763",
+                        "on-error-container": "#510017",
+                        "inverse-on-surface": "#9c9d9d",
+                        "outline": "#757777",
+                        "error-container": "#f74b6d",
+                        "on-secondary-fixed": "#403f3f",
+                        "primary-fixed-dim": "#ff5b47",
+                        "on-surface-variant": "#5a5c5c",
+                        "surface-container-low": "#f0f1f1",
+                        "error-dim": "#a70138",
+                        "tertiary-dim": "#6e3395",
+                        "on-primary-container": "#4f0000",
+                        "error": "#b41340",
+                        "on-secondary-container": "#525151",
+                        "primary": "#bb0100",
+                        "on-tertiary-container": "#4c0a73",
+                        "secondary-container": "#e5e2e1",
+                        "on-tertiary-fixed": "#2a0044",
+                        "primary-container": "#ff7763",
+                        "tertiary": "#7b40a2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Newsreader"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.04;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAnsGXEEd1Q7x9n04tCvEgKkQampAwNzTSGGdHxel02fS9BKhUsjDJrubmK3mP5pqduRzNSUrQmlr42UZ1j8vTb_rE1J--AEFY5rbQAfxGpG5y5aLLEXKvIbVIl9sXQ9Hl36HpuMN75iNP3ANYvLOhEt_1QkAW705bJPN_nKPDFzZ4oN3Jxwjs8rAdWcEQhUO_GeiVx9yhHs2WQFonwLKq_gYBz4jHoA9BToXuj1jzxw0F_DIammf38ijzl6x2N7rts9m1DtH5qSd8)
+        }
+
+        /* Kinetic Reveal Animations */
+        @keyframes revealChar {
+            0% {
+                transform: translateY(110%) skewY(10deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0) skewY(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes glitchSkew {
+            0% {
+                transform: skew(0deg);
+            }
+
+            20% {
+                transform: skew(-10deg);
+            }
+
+            21% {
+                transform: skew(10deg);
+            }
+
+            22% {
+                transform: skew(0deg);
+            }
+
+            100% {
+                transform: skew(0deg);
+            }
+        }
+
+        @keyframes kineticScale {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+                letter-spacing: 1em;
+                filter: blur(10px);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                letter-spacing: -0.05em;
+                filter: blur(0px);
+            }
+        }
+
+        .char-reveal span {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .char-reveal span i {
+            display: inline-block;
+            font-style: normal;
+            animation: revealChar 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform: translateY(110%);
+        }
+
+        .glitch-hover:hover {
+            animation: glitchSkew 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        .kinetic-reveal {
+            animation: kineticScale 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .parallax-text {
+            transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+        }
+
+        .stagger-char-1 {
+            animation-delay: 0.05s !important;
+        }
+
+        .stagger-char-2 {
+            animation-delay: 0.1s !important;
+        }
+
+        .stagger-char-3 {
+            animation-delay: 0.15s !important;
+        }
+
+        .stagger-char-4 {
+            animation-delay: 0.2s !important;
+        }
+
+        .stagger-char-5 {
+            animation-delay: 0.25s !important;
+        }
+
+        .stagger-char-6 {
+            animation-delay: 0.3s !important;
+        }
+
+        .stagger-char-7 {
+            animation-delay: 0.35s !important;
+        }
+
+        .stagger-char-8 {
+            animation-delay: 0.4s !important;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+    <div class="grain-overlay"></div>
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-40 bg-[#f6f6f6] dark:bg-[#1a1a1a] flex justify-between items-center px-6 md:px-12 h-24 border-b border-outline-variant/10">
+        <div class="text-2xl font-black tracking-tighter text-[#bb0100] dark:text-[#ff3b30] font-headline uppercase glitch-hover cursor-pointer"
+            style="">Ventue edits</div>
+        <nav class="hidden md:flex items-center space-x-12"><a
+                class="font-headline font-black tracking-tighter uppercase text-secondary dark:text-gray-400 hover:text-[#bb0100] transition-colors duration-150 flex items-center gap-1 group"
+                href="index.html"><span
+                    class="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">west</span>HOME</a>
+            <a class="font-headline font-black tracking-tighter uppercase text-[#bb0100] dark:text-[#ff3b30] border-b-4 border-[#bb0100] transition-transform duration-150 hover:translate-x-1"
+                href="#" style="">WORK</a>
+        </nav>
+        <button class="text-[#bb0100] dark:text-[#ff3b30]" style="">
+            <span class="material-symbols-outlined text-3xl" style="">menu</span>
+        </button>
+    </header>
+    <main class="pt-24">
+        <!-- Hero / Selected Works -->
+        <section class="px-6 md:px-12 py-12 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-4 order-2 lg:order-1">
+                <div class="overflow-hidden mb-8">
+                    <h1 class="font-headline font-black text-6xl md:text-8xl lg:text-9xl tracking-tighter leading-[0.85] text-primary char-reveal"
+                        style="">
+                        <span class="block" style="">
+                            <i class="stagger-char-1">S</i><i class="stagger-char-2">E</i><i
+                                class="stagger-char-3">L</i><i class="stagger-char-4">E</i><i
+                                class="stagger-char-5">C</i><i class="stagger-char-6">T</i><i
+                                class="stagger-char-7">E</i><i class="stagger-char-8">D</i>
+                        </span>
+                        <span class="block" style="">
+                            <i class="stagger-char-2">W</i><i class="stagger-char-3">O</i><i
+                                class="stagger-char-4">R</i><i class="stagger-char-5">K</i><i
+                                class="stagger-char-6">S</i>
+                        </span>
+                    </h1>
+                </div>
+                <div class="max-w-xs opacity-0 kinetic-reveal" style="animation-delay: 0.8s;">
+                    <p class="text-lg md:text-xl font-body italic text-on-surface leading-relaxed mb-6" style="">
+                        High-frequency cinematic narrative. Industrial precision met with raw, visceral motion.
+                    </p>
+                    <div class="space-y-2 border-l-2 border-primary pl-4">
+                        <span class="block font-headline font-bold text-[0.75rem] tracking-widest uppercase"
+                            style="">TECHNIQUE</span>
+                        <p class="font-body text-sm text-secondary uppercase tracking-tight" style="">CapCut Advanced /
+                            Linear Pacing / Color Grading</p>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="lg:col-span-8 order-1 lg:order-2 relative aspect-video bg-surface-container overflow-hidden group shadow-2xl">
+
+                <a href="https://youtu.be/HH4bOJWi7T8" target="_blank"
+                    class="w-full h-full absolute inset-0 scale-105 group-hover:scale-100 transition-transform duration-1000 block overflow-hidden">
+                    <img src="https://img.youtube.com/vi/HH4bOJWi7T8/maxresdefault.jpg" alt="Watch on YouTube"
+                        class="w-full h-full object-cover" />
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/10 transition-all">
+                        <svg width="80" height="80" viewBox="0 0 68 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M66.5 7.5C65.7 4.7 63.5 2.5 60.7 1.7C55.4 0 34 0 34 0S12.6 0 7.3 1.7C4.5 2.5 2.3 4.7 1.5 7.5C0 12.8 0 24 0 24S0 35.2 1.5 40.5C2.3 43.3 4.5 45.5 7.3 46.3C12.6 48 34 48 34 48S55.4 48 60.7 46.3C63.5 45.5 65.7 43.3 66.5 40.5C68 35.2 68 24 68 24S68 12.8 66.5 7.5Z"
+                                fill="#FF0000" />
+                            <path d="M27 34L45 24L27 14V34Z" fill="white" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <!-- Asymmetric Detail Grid -->
+        <section class="px-6 md:px-12 py-12 bg-surface-container overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-outline-variant/15">
+                <div
+                    class="p-8 border-b md:border-b-0 md:border-r border-outline-variant/15 flex flex-col justify-between min-h-[300px] group transition-all duration-500 hover:bg-background">
+                    <span class="font-headline font-bold text-primary text-[0.75rem] tracking-widest uppercase"
+                        style="">01 / ARCHITECTURE</span>
+                    <h3 class="font-headline font-black text-4xl tracking-tighter leading-none mt-4 text-on-background group-hover:italic transition-all"
+                        style="">MECHANICAL<br />TRANSITIONS</h3>
+                    <p class="font-body text-secondary mt-auto" style="">Every cut is calculated. Using power curves to
+                        mimic the acceleration of industrial machinery.</p>
+                </div>
+                <div
+                    class="p-8 border-b md:border-b-0 border-outline-variant/15 flex flex-col justify-between min-h-[300px] group transition-all duration-500 hover:bg-background">
+                    <span class="font-headline font-bold text-primary text-[0.75rem] tracking-widest uppercase"
+                        style="">02 / COLOR</span>
+                    <h3 class="font-headline font-black text-4xl tracking-tighter leading-none mt-4 text-on-background group-hover:italic transition-all"
+                        style="">VISCERAL<br />PALETTES</h3>
+                    <p class="font-body text-secondary mt-auto" style="">Aggressive high-contrast grading. Dominant reds
+                        and industrial grays define the visual identity.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Instagram CTA Section -->
+        <section class="bg-primary text-on-primary py-32 relative overflow-hidden" id="cta-section">
+            <!-- Background Kinetic Text -->
+            <div class="absolute inset-0 flex items-center pointer-events-none opacity-20">
+                <div
+                    class="flex whitespace-nowrap font-headline font-black text-[20rem] leading-none select-none animate-marquee">
+                    <div class="px-4" style="">INSTAGRAM INSTAGRAM INSTAGRAM INSTAGRAM</div>
+                    <div class="px-4" style="">INSTAGRAM INSTAGRAM INSTAGRAM INSTAGRAM</div>
+                </div>
+            </div>
+            <div class="relative z-10 px-6 md:px-12 flex flex-col items-center text-center">
+                <div class="overflow-hidden mb-8">
+                    <span
+                        class="block font-headline font-bold text-sm tracking-[0.6em] uppercase transition-all duration-1000 parallax-text"
+                        data-speed="0.05" style="">THE MOTION CONTINUES</span>
+                </div>
+                <div class="overflow-hidden mb-12">
+                    <h2 class="font-headline font-black text-7xl md:text-9xl tracking-tighter leading-none uppercase italic parallax-text"
+                        data-speed="0.1" style="">
+                        <span class="block kinetic-reveal" style="">FOLLOW THE</span>
+                        <span class="block kinetic-reveal" style="">MOTION</span>
+                    </h2>
+                </div>
+                <a class="group relative bg-on-primary text-primary px-16 py-8 font-headline font-black text-3xl tracking-tighter uppercase transition-all duration-500 hover:tracking-widest hover:bg-on-primary/90"
+                    href="https://www.instagram.com/_ventue?igsh=ajM1NHUyaXc2ZnZo" style="">
+                    _VENTUE
+                    <span
+                        class="block absolute bottom-0 left-0 h-1 w-full bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                </a>
+                <div class="mt-12 flex items-center gap-4">
+                    <span class="font-body text-xl italic opacity-80" style="">Join the ventue on Instagram for preview
+                        edits.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-20 px-6 md:px-12 flex flex-col md:flex-row justify-between items-end bg-[#bb0100] text-[#f6f6f6] border-t border-white/10">
+        <div class="flex flex-col gap-4 mb-8 md:mb-0 w-full md:w-auto">
+            <div class="text-4xl font-black text-[#f6f6f6] font-headline uppercase leading-none hover:tracking-tighter transition-all duration-300"
+                style="">Editor<div>bitupan</div>
+            </div>
+            <p class="font-headline font-bold text-[0.75rem] uppercase tracking-widest opacity-80" style="">
+                ©2026 portfolio. ALL RIGHTS RESERVED.
+            </p>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8 md:gap-16 w-full md:w-auto">
+            <nav class="flex flex-col gap-2"><a
+                    class="font-headline font-bold text-[0.75rem] uppercase tracking-widest text-white hover:italic transition-all flex items-center gap-2 mb-2"
+                    href="index.html"><span class="material-symbols-outlined text-sm">west</span>BACK TO HOME</a>
+                <a class="font-headline font-bold text-[0.75rem] uppercase tracking-widest text-[#f6f6f6]/80 hover:italic hover:text-white transition-all"
+                    href="#" style="">INSTAGRAM</a>
+                <a class="font-headline font-bold text-[0.75rem] uppercase tracking-widest text-[#f6f6f6]/80 hover:italic hover:text-white transition-all"
+                    href="#" style="">VIMEO</a>
+                <a class="font-headline font-bold text-[0.75rem] uppercase tracking-widest text-[#f6f6f6]/80 hover:italic hover:text-white transition-all"
+                    href="#" style="">BEHANCE</a>
+                <a class="font-headline font-bold text-[0.75rem] uppercase tracking-widest text-[#f6f6f6]/80 hover:italic hover:text-white transition-all underline decoration-2"
+                    href="#" style="">PRIVACY</a>
+            </nav>
+            <div class="flex flex-col items-end gap-4">
+                <span class="font-headline font-bold text-[0.75rem] uppercase tracking-widest" style="">EN // INT</span>
+                <span class="material-symbols-outlined text-4xl animate-bounce-short" style="">north_east</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Simple parallax and kinetic scroll effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-text');
+
+            parallaxElements.forEach(el => {
+                const speed = el.getAttribute('data-speed') || 0.1;
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const shift = (scrolled - el.offsetTop) * speed;
+                    el.style.transform = `translateY(${shift}px)`;
+                }
+            });
+
+            // Kinetic shift for titles
+            const titles = document.querySelectorAll('h1, h2, h3');
+            titles.forEach(title => {
+                const rect = title.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const intensity = (1 - (rect.top / window.innerHeight)) * 10;
+                    title.style.letterSpacing = `${-0.05 * intensity}rem`;
+                }
+            });
+        });
+    </script>
+    <style>
+        @keyframes bounceShort {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .animate-bounce-short {
+            animation: bounceShort 1.5s ease-in-out infinite;
+        }
+    </style>
+
+
+</html>

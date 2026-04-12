@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#bb0100",
+                        "primary-container": "#ff7763",
+                        "on-secondary-fixed": "#403f3f",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-dim": "#a40100",
+                        "primary": "#bb0100",
+                        "surface-variant": "#dbdddd",
+                        "secondary-container": "#e5e2e1",
+                        "inverse-surface": "#0c0f0f",
+                        "on-surface": "#2d2f2f",
+                        "tertiary": "#7b40a2",
+                        "on-secondary-container": "#525151",
+                        "on-error": "#ffefef",
+                        "error-dim": "#a70138",
+                        "primary-fixed": "#ff7763",
+                        "on-error-container": "#510017",
+                        "surface-container-high": "#e1e3e3",
+                        "on-primary-fixed-variant": "#600000",
+                        "outline": "#757777",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#5c5b5b",
+                        "surface-dim": "#d2d5d5",
+                        "on-tertiary": "#fdeeff",
+                        "surface-bright": "#f6f6f6",
+                        "surface-container-low": "#f0f1f1",
+                        "surface": "#f6f6f6",
+                        "on-primary-fixed": "#000000",
+                        "tertiary-fixed": "#d697ff",
+                        "tertiary-container": "#d697ff",
+                        "on-primary": "#ffefed",
+                        "primary-fixed-dim": "#ff5b47",
+                        "tertiary-dim": "#6e3395",
+                        "secondary": "#5c5b5b",
+                        "background": "#f6f6f6",
+                        "error": "#b41340",
+                        "surface-container-highest": "#dbdddd",
+                        "on-tertiary-container": "#4c0a73",
+                        "on-tertiary-fixed": "#2a0044",
+                        "on-primary-container": "#4f0000",
+                        "secondary-dim": "#504f4f",
+                        "surface-container": "#e7e8e8",
+                        "inverse-primary": "#ff5540",
+                        "on-surface-variant": "#5a5c5c",
+                        "inverse-on-surface": "#9c9d9d",
+                        "secondary-fixed-dim": "#d6d4d3",
+                        "on-secondary": "#f5f2f1",
+                        "on-background": "#2d2f2f",
+                        "outline-variant": "#acadad",
+                        "error-container": "#f74b6d",
+                        "tertiary-fixed-dim": "#c889f1",
+                        "on-tertiary-fixed-variant": "#56197d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Newsreader"],
+                        "label": ["Inter"]
+                    },
+                    "animation": {
+                        "reveal-3d": "reveal-3d 1.2s cubic-bezier(0.2, 0, 0, 1) forwards",
+                        "float-slow": "float 6s ease-in-out infinite",
+                        "char-reveal": "char-reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards"
+                    },
+                    "keyframes": {
+                        "reveal-3d": {
+                            "0%": { transform: "translateY(100%) rotateX(-45deg)", opacity: "0" },
+                            "100%": { transform: "translateY(0) rotateX(0)", opacity: "1" }
+                        },
+                        "char-reveal": {
+                            "0%": { transform: "translateY(80%) rotateX(-90deg)", opacity: "0" },
+                            "100%": { transform: "translateY(0) rotateX(0deg)", opacity: "1" }
+                        },
+                        "float": {
+                            "0%, 100%": { transform: "translateY(0)" },
+                            "50%": { transform: "translateY(-20px)" }
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .grain-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .kinetic-text {
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+        }
+
+        .reveal-container {
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        .parallax-target {
+            transition: transform 0.1s ease-out;
+        }
+
+        .hover-link-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hover-link-effect::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .hover-link-effect:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Aesthetic Frame Styles */
+        .photo-frame {
+            position: relative;
+            background: #fff;
+            padding: 6px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* 3D Stack Styles */
+        .stack-container {
+            perspective: 2000px;
+            height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-stack {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            transform-style: preserve-3d;
+        }
+
+        .stack-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        /* Layer Positions */
+        .card-1 {
+            transform: translate3d(0, 0, 0) rotateZ(-2deg);
+            z-index: 5;
+        }
+
+        .card-2 {
+            transform: translate3d(40px, -20px, -50px) rotateZ(3deg);
+            z-index: 4;
+        }
+
+        .card-3 {
+            transform: translate3d(-60px, 30px, -100px) rotateZ(-5deg);
+            z-index: 3;
+        }
+
+        .card-4 {
+            transform: translate3d(80px, 40px, -150px) rotateZ(2deg);
+            z-index: 2;
+        }
+
+        .card-5 {
+            transform: translate3d(-30px, -50px, -200px) rotateZ(6deg);
+            z-index: 1;
+        }
+
+        .card-6 {
+            transform: translate3d(100px, -80px, -250px) rotateZ(-4deg);
+            z-index: 0;
+        }
+
+        .card-stack:hover .card-1 {
+            transform: translate3d(-180px, 0, 50px) rotateZ(-8deg);
+        }
+
+        .card-stack:hover .card-2 {
+            transform: translate3d(-60px, -40px, 30px) rotateZ(-2deg);
+        }
+
+        .card-stack:hover .card-3 {
+            transform: translate3d(60px, 40px, 20px) rotateZ(4deg);
+        }
+
+        .card-stack:hover .card-4 {
+            transform: translate3d(180px, -20px, 40px) rotateZ(8deg);
+        }
+
+        .card-stack:hover .card-5 {
+            transform: translate3d(300px, 60px, 10px) rotateZ(-3deg);
+        }
+
+        .card-stack:hover .card-6 {
+            transform: translate3d(-300px, 80px, 10px) rotateZ(5deg);
+        }
+
+        .velocity-overlay {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(187, 1, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+    <!-- Top Navigation Shell -->
+    <nav
+        class="flex justify-between items-center px-12 py-6 w-full fixed top-0 z-50 bg-[#f6f6f6]/90 backdrop-blur-sm border-b border-primary/5">
+        <div class="text-2xl font-black text-[#bb0100] tracking-tighter font-['Inter'] uppercase">Portfolio</div>
+        <div>
+            <a class="text-[#bb0100] font-['Inter'] font-black uppercase tracking-tighter text-[0.75rem] flex items-center gap-2 group hover-link-effect"
+                href="index.html">
+                <span
+                    class="material-symbols-outlined text-[1rem] group-hover:-translate-x-2 transition-transform duration-300">arrow_back</span>
+                BACK TO HOME
+            </a>
+        </div>
+    </nav>
+    <main class="relative pt-32 overflow-hidden">
+        <!-- Hero Section -->
+        <section class="px-12 mb-12 relative">
+            <div class="absolute -left-12 top-0 opacity-10 select-none parallax-target" data-speed="0.05">
+                <span class="font-headline font-black text-[25vw] kinetic-text text-primary leading-none">KV</span>
+            </div>
+            <div class="reveal-container">
+                <h1 class="font-headline font-black text-[12vw] md:text-[16vw] kinetic-text text-primary uppercase relative z-10 break-all flex overflow-hidden"
+                    style="perspective: 1000px;">
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.1s;">P</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.15s;">H</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.2s;">O</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.25s;">T</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.3s;">O</span>
+                </h1>
+            </div>
+            <div class="reveal-container -mt-4 md:-mt-8">
+                <h1 class="font-headline font-black text-[12vw] md:text-[16vw] kinetic-text text-primary uppercase relative z-10 break-all flex overflow-hidden"
+                    style="perspective: 1000px;">
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.4s;">G</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.45s;">R</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.5s;">A</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.55s;">P</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.6s;">H</span>
+                    <span class="animate-char-reveal inline-block opacity-0" style="animation-delay: 0.65s;">Y</span>
+                </h1>
+            </div>
+            <div class="flex justify-end -mt-8 md:-mt-16 relative z-20 parallax-target" data-speed="-0.02">
+                <p class="max-w-md font-body italic text-xl md:text-2xl text-on-surface leading-tight text-right">
+                    Capturing the <span class="text-primary font-bold not-italic">velocity of light</span> through
+                    high-frequency industrial observation.
+                </p>
+            </div>
+        </section>
+        <!-- 3D Layered Gallery Section -->
+        <section class="relative min-h-[800px] flex items-center justify-center py-20">
+            <!-- Interacting Text Layer -->
+            <div class="absolute inset-0 pointer-events-none z-40 flex items-center justify-center overflow-hidden">
+                <h2 class="font-headline font-black text-[22vw] uppercase tracking-tighter mix-blend-exclusion parallax-target select-none whitespace-nowrap velocity-overlay"
+                    data-speed="0.1">VELOCITY</h2>
+            </div>
+            <!-- The Stack -->
+            <div class="stack-container w-full relative z-30">
+                <div class="card-stack">
+                    <!-- Card 1 -->
+                    <div class="stack-card card-1">
+                        <div class="photo-frame w-full h-full bg-surface-container">
+                            <img alt="Clock tower at night" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0ujOml1McQ7lvj6c_HcM2BhBWsxG5rNoGG3ielgce7Ou8pVH7Kf_lhga4e7EBqK1GMgwywMdozbd-hO8Rz3x-VjjlRZOck7BW17bQ2iQVOWKjOJe3qG6nGGOSN3SbaFtbAV3pbC45ULXGzIHmgOfezqa06Bh6XjbaYXQj9AQtculK2pwqyvkvvsw0-BLPerpkovWJZN_GkvCbTDrilsQhUGUAA1Qm8lQGJPYBMIYXAAhuhUrwtdfjP_Dk826VUtRqDgFUdZ-pUsmEw" />
+                            <div class="absolute bottom-4 left-4">
+                                <span
+                                    class="text-primary font-label text-[0.6rem] font-bold tracking-widest uppercase bg-white/90 px-2 py-1">SCAN_001</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="stack-card card-2">
+                        <div class="photo-frame w-full h-full bg-surface-container">
+                            <img alt="Mountain range in fog" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uid6ahdjZZpds67Ih22VfMYRKhOm5x2T-4JocLlrMwgoQ2Z6pnHjx0MiVL74SmhqyXeIFEWwdPADLV6nsFz0eQfFKnkTHG3N-RE6_533KPkdY3ik2NpzB_0APfPR0y2IqifQ04T93pcLU82emWSH54LewoNtU_prXMcE7rCNL-U3SUTHBf17w8gSjRfeGImjYCNCS6xSrxPEKpGXDP2SEVgdIGi-hqEJSufvK8pm5hL7YWDKxQAaymLh3qD_RZ7MsRpBM0E9y3C9A" />
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="stack-card card-3">
+                        <div class="photo-frame w-full h-full bg-surface-container">
+                            <img alt="Busy street at night" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uhcAqzdNAEbbNclfk1Dy3cp03IlddH4WVYqdASlyYXx7-synxqO2RQbPOyJEYad62-av3zPEPj6uX8c5Qh_SLpW9jDskaaF4OHJ62lNFwNeW4UiN42zyN-xnFDf4R-LF0McENZ93iHQBGraVCqZoBrGnheYwlwhAIk_pEnQfDy1EtsSsgz29GyEBslNtLoCh2cjUddy9st6Vf72hoz0YHGe5lX7cOL4KD5rUFI8Sp3GfzwUelF91VcZC1fXXO8ly9qJFDKN6f1OZg" />
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="stack-card card-4">
+                        <div class="photo-frame w-full h-full bg-surface-container">
+                            <img alt="Yak with Sikkim flag" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uhnHlt__WmmKk8MraAFDZsE2awABLkmOe5yzA4gpo1pmh8dOEYlf7Vuly03BpGVpA749Wd22oCsn7MNcgeKqdcI3BSRwluI5sMmbTbnuVSu8TQRv5DQ84spSvbS3lwUcgLkfJbaRqY2deFMVKvp_lk_DZgYsk-7Bom1_olloPteBWmPJvfclG9rwTA1EvMGM8N-COQThGhGhZf5wm07-PUF0izezEePoeIF4Tu-nAJQmLagzR1cvNNxd7txEwOPlXohKYCFXE4Fiw" />
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="stack-card card-5">
+                        <div class="photo-frame w-full h-full bg-surface-container">
+                            <img alt="Mountain view from balcony" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uh4wWXmG6WVXysFaRdGYq4Sr8cSGcmKrNtzqM3kOdQIoDffIVS9fCR9jsaHeQkitMx9JSxNwJl51nqILW-BVyhdfCTI1mEV4rQXizOR3jPyXdTnsZ4HPc7rdWGFD4QbQPW991QqNJvq0AoLLGrMv0xA2R4S6l3FrFSewhfeJiDb6rt-wW0mXYxDGpQpFtTlSdyDJHcknlfbjjEwkT9qlavKcyq_6htKj_v9oEZ9v4JYmuyhgDC604K4LlSY-UMqs7cGTg34ReIolg" />
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="stack-card card-6">
+                        <div class="photo-frame w-full h-full bg-surface-container">
+                            <img alt="Night market crowd" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uit5JJ2pxopokko1R42Mp0T9-ILJ3CJrG52KNACcggDbYN6SaXV0GMEtKw-3psCpnTDWYhB-6oOoCeSIzLACB5eGwpnIplqdm0XncCG6TcD65A_a99-Fkr7ypD8Tf7AB0Y-BhNfQsvizpr9lPo9GLop0epLRvQzv2AuPPryEuq5IAandXcKLoVPAxoO1NnqSOsXC6o7kVgNYmcYfXdAlRcmHdTH2sSj5Ah0UlRkJAp6YYssFj1p4vg6ahzJZ_VfqVcjIvWWHdA55w" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Metadata labels positioned around the stack -->
+            <div class="absolute bottom-20 left-12 border-l-2 border-primary pl-6 max-w-xs z-20">
+                <span
+                    class="font-label font-bold text-[0.7rem] tracking-[0.2em] text-primary block mb-2">DEPTH_PARAMETER
+                    / 4.0</span>
+                <p class="font-body text-base leading-snug">Layered observations capturing high-frequency light
+                    transitions within industrial structures.</p>
+            </div>
+            <div class="absolute top-40 right-12 text-right z-20">
+                <span class="font-label font-bold text-[0.7rem] tracking-[0.2em] text-primary block mb-2">SYSTEM_STATUS
+                    / OVERFLOW</span>
+                <span class="font-body italic text-sm text-on-surface-variant">Stochastic sampling of visual
+                    kineticism.</span>
+            </div>
+        </section>
+        <!-- Pinterest Section -->
+        <section class="w-full bg-primary relative overflow-hidden group">
+            <div class="grain-overlay absolute inset-0 z-10"></div>
+            <div class="flex flex-col md:flex-row items-stretch">
+                <!-- Visual Background Half -->
+                <div class="w-full md:w-1/2 min-h-[500px] relative overflow-hidden">
+                    <img alt="curated grid of avant-garde photography"
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-125 group-hover:rotate-3 transition-transform duration-[3000ms] grayscale contrast-125 parallax-target"
+                        data-speed="0.08"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6e2NYvVv_YNMxH1ScFF19206mhqB4mlPmOYojAjHrdZJBIHpIkiSJjG3eQqnYQIMUkgjO8CoCBwxhnLhTVEeWkAF75kXB8l1vIcK42dO0kpGYoIYrIbqs0L7GMpgmZ0p5KwEON3o5E23qyI29e9rzWktm2OcVNbdUvonggsRCi3F8f0L3N04NBgOBzkgTcywLtQao53csAQP7yMc_gOWMl3OOpZSkpoPZJstOvJzfchFiLrFeB2lOMns08Q3Y8iOTuRzaTfAEkLw" />
+                    <div class="absolute inset-0 bg-primary mix-blend-multiply opacity-40"></div>
+                </div>
+                <!-- Content Half -->
+                <div class="w-full md:w-1/2 p-12 md:p-24 flex flex-col justify-center items-start relative z-20">
+                    <span
+                        class="font-label font-bold text-[0.75rem] tracking-[0.3em] text-on-primary opacity-80 mb-6 uppercase">EXTENDED
+                        ARCHIVE</span>
+                    <h2
+                        class="font-headline font-black text-5xl md:text-7xl text-on-primary uppercase leading-[0.9] mb-12 transform group-hover:-translate-y-2 transition-transform duration-700">
+                        VISUAL <span class="italic font-body font-light lowercase">curation</span> <br /> ON PINTEREST
+                    </h2>
+                    <a class="group/btn relative inline-flex items-center gap-4 bg-on-primary text-primary px-10 py-5 font-headline font-black uppercase tracking-tighter hover:bg-black hover:text-white transition-all duration-300 transform hover:-translate-y-2"
+                        href="https://pin.it/3T66tFEO5">
+                        EXPLORE THE BOARD
+                        <span
+                            class="material-symbols-outlined text-2xl group-hover/btn:translate-x-4 transition-transform duration-300">arrow_right_alt</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Manifesto Section -->
+        <section class="py-32 px-12 border-t border-outline-variant/15">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-12">
+                <div class="max-w-xl parallax-target" data-speed="0.01">
+                    <h3 class="font-headline font-black text-4xl uppercase mb-6 leading-none">THE Ventue MANIFESTO</h3>
+                    <p class="font-body text-2xl italic leading-relaxed text-on-surface-variant">
+                        "Every frame tells a story my heart saw first"
+                    </p>
+                </div>
+                <div class="flex flex-col items-end">
+                    <div class="h-1 w-64 bg-primary mb-4 animate-pulse"></div>
+                    <span class="font-label font-bold text-[0.75rem] text-primary tracking-widest">SYSTEM STATUS:
+                        ACTIVE</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer Shell -->
+    <footer class="w-full px-12 py-16 flex flex-col md:flex-row justify-between items-end bg-[#bb0100]">
+        <div class="flex flex-col gap-4">
+            <div class="text-xl font-black text-[#f6f6f6] font-['Inter'] uppercase tracking-tighter">photographer</div>
+            <div class="text-[#f6f6f6] font-['Inter'] font-bold text-[0.75rem] uppercase tracking-widest opacity-60">
+                ©2026 portfolio. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row items-end gap-8 mt-12 md:mt-0">
+            <a class="text-[#ffefed] font-['Inter'] font-bold text-[0.75rem] uppercase tracking-widest flex items-center gap-2 group hover-link-effect"
+                href="index.html">
+                <span
+                    class="material-symbols-outlined text-[1rem] group-hover:-translate-x-2 transition-transform duration-300">arrow_back</span>
+                BACK TO HOME
+            </a>
+            <div class="flex gap-8">
+                <a class="text-[#ffefed] opacity-60 hover:opacity-100 transition-all font-['Inter'] font-bold text-[0.75rem] uppercase tracking-widest hover-link-effect"
+                    href="#">INSTAGRAM</a>
+                <a class="text-[#ffefed] opacity-60 hover:opacity-100 transition-all font-['Inter'] font-bold text-[0.75rem] uppercase tracking-widest hover-link-effect"
+                    href="https://pin.it/3T66tFEO5">PINTEREST</a>
+                <a class="text-[#ffefed] opacity-60 hover:opacity-100 transition-all font-['Inter'] font-bold text-[0.75rem] uppercase tracking-widest hover-link-effect"
+                    href="#">ARE.NA</a>
+                <a class="text-[#ffefed] opacity-60 hover:opacity-100 transition-all font-['Inter'] font-bold text-[0.75rem] uppercase tracking-widest hover-link-effect"
+                    href="#">VIMEO</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Simple Parallax Effect
+        window.addEventListener('scroll', () => {
+            const targets = document.querySelectorAll('.parallax-target');
+            targets.forEach(target => {
+                const speed = target.getAttribute('data-speed');
+                const yPos = -(window.pageYOffset * speed);
+                target.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Intersection Observer for staggered 3D reveals
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-reveal-3d');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-container h1').forEach(h1 => {
+            observer.observe(h1);
+        });
+
+        // Click interaction for cards to bring to front
+        const cards = document.querySelectorAll('.stack-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const currentZ = parseInt(window.getComputedStyle(card).zIndex);
+                cards.forEach(c => {
+                    const z = parseInt(window.getComputedStyle(c).zIndex);
+                    if (z > currentZ) c.style.zIndex = z - 1;
+                });
+                card.style.zIndex = '10';
+            });
+        });
+    </script>
+</body>
+
+</html>

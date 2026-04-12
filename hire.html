@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>HIRE ME </title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E60000',
+                        'on-primary': '#FFFFFF',
+                        background: '#FFFFFF',
+                        'on-background': '#000000',
+                        surface: '#F6F6F6',
+                        'on-surface': '#000000',
+                        'on-surface-variant': '#4D4D4D',
+                        outline: '#E60000',
+                        'outline-variant': '#CCCCCC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        body: ['Newsreader', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes character-3d {
+
+            0%,
+            100% {
+                transform: translateY(0) rotateY(0deg) rotateX(0deg);
+            }
+
+            25% {
+                transform: translateY(-5px) rotateY(5deg) rotateX(2deg);
+            }
+
+            50% {
+                transform: translateY(0) rotateY(0deg) rotateX(0deg);
+            }
+
+            75% {
+                transform: translateY(-3px) rotateY(-5deg) rotateX(-2deg);
+            }
+        }
+
+        .animate-character-3d {
+            animation: character-3d 4s ease-in-out infinite;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <style>
+        .char {
+            display: inline-block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #hero-title,
+        #form-title {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="text-on-background bg-background overflow-x-hidden font-inter">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-white border-b border-gray-100 flex justify-between items-center px-6 py-4">
+        <div class="text-2xl font-black text-primary tracking-tighter uppercase" style="">portfolio</div>
+        <nav class="flex gap-8 items-center">
+            <a class="font-black uppercase tracking-tighter text-sm text-on-background hover:text-primary transition-colors duration-150"
+                href="index.html" style="">
+                BACK TO HOME
+            </a>
+
+        </nav>
+    </header>
+    <main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto relative">
+        <!-- Floating Minecraft Character Element -->
+        <div class="absolute top-0 right-10 md:right-32 flex flex-col items-center gap-2 z-10 select-none">
+            <div class="relative">
+                <img alt="Waving Minecraft character"
+                    class="w-48 h-auto object-contain animate-character-3d drop-shadow-2xl relative z-20"
+                    src="https://lh3.googleusercontent.com/aida/ADBb0ug3Y7tdYxfYPpqRrsBypBTkJFGsYto0gy10vHDTAi9XuuYEbXzM8QxRdUlvtKlBYY3pQ2HL4U4XGEnDpvx4khlv0Rr-2_3w8TGHQfniRJ3Z_qr4v2FULpRCF8i4LMRKX0J3nMDWv9Mme5A-xP-6bmzLWLDuGMbzwgAOODO9bqNho1cP-N6DwJuFF3NHX0aY2A75MDoEDkA_3KDEVoenrhSRzT5oNg6Dp4L-8qBUrSYgvLbyJkz2vGO7VkxB2c6i8KasQUy-rJtr"
+                    style="transform: translate(-1.96px, 14.7px) rotateY(-0.98deg) rotateX(-7.35deg);" />
+            </div>
+            <span class="font-black text-[10px] tracking-[0.2em] uppercase text-on-background" style="">EST.
+                MMXXIV</span>
+        </div>
+        <!-- Hero Section -->
+        <section class="relative mb-24">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                <div class="md:col-span-10">
+                    <h1 class="text-[12vw] md:text-[10rem] font-black leading-[0.8] tracking-tighter text-red-600 uppercase mb-4"
+                        id="hero-title" style="">
+                        HIRE ME<span class="text-primary" style="">.</span>
+                    </h1>
+                    <p class="font-body italic text-2xl md:text-3xl text-on-surface-variant max-w-2xl leading-snug"
+                        style="">
+                        Let's build something <font color="#e60000"><span
+                                style="font-size: 20px; font-style: normal; text-transform: uppercase;"><b>unique</b></span>
+                        </font> and <span class="text-primary font-black not-italic uppercase text-xl"
+                            style="">elegant</span>.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Form Section -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <!-- Left Editorial Text -->
+            <div class="md:col-span-4 border-l-4 border-primary pl-8">
+                <h2 class="font-black text-4xl uppercase tracking-tighter mb-6 leading-none text-on-background"
+                    id="form-title" style="">START A<br />PROJECT</h2>
+                <div class="space-y-6 font-body text-lg text-on-surface">
+                    <p class="" style="">
+                        The Venture doesn't follow trends; we set the pace. Every pixel is a calculated strike, every
+                        layout an intentional movement.
+                    </p>
+                    <p class="font-bold text-on-background" style="">
+                        Fill out the technical specifications for your inquiry. Precision is mandatory.
+                    </p>
+                    <div class="pt-8">
+                        <span class="font-bold text-[10px] uppercase tracking-widest text-primary block mb-2"
+                            style="">EMAIL NOTICE</span>
+                        <p class="text-xs uppercase tracking-tight text-on-surface-variant" style="">
+                            ALL DETAILS WILL BE AUTOMATICALLY ARCHIVED AND SENT TO <span
+                                class="font-black text-on-background" style="">WHOME02193@GMAIL.COM</span> FOR IMMEDIATE
+                            REVIEW.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Form UI -->
+            <div class="md:col-span-8 bg-white p-8 md:p-16 border border-gray-100">
+                <form class="space-y-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Full Name -->
+                        <div class="relative group">
+                            <label
+                                class="block font-black text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors"
+                                style="">01. FULL NAME</label>
+                            <input
+                                class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-bold uppercase tracking-tight py-4 text-xl placeholder:text-gray-300 transition-all"
+                                placeholder="IDENTITY" type="text" />
+                        </div>
+                        <!-- Email -->
+                        <div class="relative group">
+                            <label
+                                class="block font-black text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors"
+                                style="">02. EMAIL ADDRESS</label>
+                            <input
+                                class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-bold uppercase tracking-tight py-4 text-xl placeholder:text-gray-300 transition-all"
+                                placeholder="COMMUNICATION" type="email" />
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Physical Address -->
+                        <div class="relative group">
+                            <label
+                                class="block font-black text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors"
+                                style="">03. PHYSICAL ADDRESS</label>
+                            <input
+                                class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-bold uppercase tracking-tight py-4 text-xl placeholder:text-gray-300 transition-all"
+                                placeholder="LOCATION" type="text" />
+                        </div>
+                        <!-- Project Budget -->
+                        <div class="relative group">
+                            <label
+                                class="block font-black text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors"
+                                style="">04. PROJECT BUDGET / PRICE</label>
+                            <input
+                                class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-bold uppercase tracking-tight py-4 text-xl placeholder:text-gray-300 transition-all"
+                                placeholder="RESOURCES (USD)" type="text" />
+                        </div>
+                    </div>
+                    <!-- Additional Context -->
+                    <div class="relative group">
+                        <label
+                            class="block font-black text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors"
+                            style="">05. project OBJECTIVES</label>
+                        <textarea
+                            class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:ring-0 focus:border-primary font-body text-xl py-4 placeholder:text-gray-300 transition-all resize-none"
+                            placeholder="DESCRIBE THE SCOPE OF THE VANGUARD'S INVOLVEMENT..." rows="4"></textarea>
+                    </div>
+                    <!-- CTA Section -->
+                    <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-8">
+                        <p class="font-body italic text-on-surface-variant text-sm max-w-xs" style="">
+                            By clicking submit, you acknowledge that our engagement will be high-impact, high-frequency,
+                            and aesthetically uncompromising.
+                        </p>
+                        <button
+                            class="w-full md:w-auto bg-primary text-on-primary px-12 py-6 font-black uppercase tracking-[0.2em] text-lg hover:shadow-[12px_12px_0px_0px_rgba(230,0,0,0.2)] active:scale-95 transition-all"
+                            style="" type="submit">
+                            SUBMIT INQUIRY
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="bg-primary flex flex-col md:flex-row justify-between items-center p-12 w-full text-white font-bold text-[10px] uppercase tracking-widest mt-24">
+        <div class="mb-8 md:mb-0">
+            <span class="font-black text-lg block mb-2" style="">hire me</span>
+            <p class="" style="">© 2026 portfolio. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="flex gap-8">
+            <a class="hover:text-white/80 transition-all" href="https://www.instagram.com/_ventue?igsh=ajM1NHUyaXc2ZnZo"
+                style="">Instagram</a>
+            <a class="hover:text-white/80 transition-all" href="https://pin.it/3T66tFEO5" style="">pinterest</a>
+            <a class="hover:text-white/80 transition-all" href="index.html" style="">home</a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const char = document.querySelector('img[src*="aida"]');
+            if (char) {
+                const x = (window.innerWidth / 2 - e.pageX) / 50;
+                const y = (window.innerHeight / 2 - e.pageY) / 50;
+                char.style.transform = `translate(${x}px, ${y}px) rotateY(${x * 0.5}deg) rotateX(${-y * 0.5}deg)`;
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = new SplitType('#hero-title', { types: 'chars' });
+            const formTitle = new SplitType('#form-title', { types: 'chars' });
+
+            const tl = gsap.timeline();
+
+            tl.from(heroTitle.chars, {
+                duration: 1.2,
+                y: 100,
+                opacity: 0,
+                stagger: 0.05,
+                ease: 'expo.out',
+            })
+                .from(formTitle.chars, {
+                    duration: 1,
+                    y: 50,
+                    opacity: 0,
+                    stagger: 0.03,
+                    ease: 'power4.out',
+                }, '-=0.8');
+        });
+    </script>
+</body>
+
+</html>
